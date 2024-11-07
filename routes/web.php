@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\CitaController;
-use App\Http\Controllers\EmpresaController;
-use App\Http\Controllers\EspecialidadController;
-use App\Http\Controllers\MedicoController;
-use App\Http\Controllers\PacienteController;
-use App\Http\Controllers\RecuperarClaveController;
-use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CitaController;
+use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\RecuperarClaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +34,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 /* mis rutas */
-Route::get("mi-perfil", function(){
-    return view("vistas.perfil");
-})->name("usuario.perfil");
+Route::get("mi-perfil", [PerfilController::class, "index"])->name("usuario.perfil");
+
 
 
 //empresa
