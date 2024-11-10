@@ -135,7 +135,7 @@
                                     @if (Auth::user()->foto==null)
                                     <img src="{{asset('app/publico/img/user.svg')}}" alt="">
                                     @else
-                                    <img src="data:image/jpg;base64,<?= base64_encode(Auth::user()->foto) ?>" alt="">
+                                    <img src="{{ asset("storage/FOTOS-PERFIL-USUARIO/$item->foto") }}" alt="">
                                     @endif
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="dd-user-menu">

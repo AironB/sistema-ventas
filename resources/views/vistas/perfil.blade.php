@@ -57,10 +57,12 @@
         @foreach ($datos as $item)
             <div class="contenedor">
                 <div>
+                    {{-- llamamos la imagen segun el dato que esta en la DB --}}
                     @if ($item->foto !=null)
                     <img class="img" src="{{ asset("storage/FOTOS-PERFIL-USUARIO/$item->foto") }}">
-                    @else
-                    <img class="img" src="{{ asset("/image/img.jpg") }}">
+                    @else 
+                    {{-- Si no hay imagen mostramos un avatar --}}
+                    <img class="img" src="{{ asset("images/img.jpg") }}">
                     @endif
 
                 </div>
