@@ -59,7 +59,7 @@
         </script>
         <script src="{{asset('pnotify/js/pnotify.buttons.js')}}">
         </script>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         {{-- alpine js --}}
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 

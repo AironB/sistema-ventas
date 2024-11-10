@@ -35,7 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* mis rutas */
 Route::get("mi-perfil", [PerfilController::class, "index"])->name("usuario.perfil");
-
+Route::post("actualizar-foto-perfil",[PerfilController::class, "ActualizarIMG"])->name("usuario.actualizarIMG");
 
 
 //empresa
