@@ -36,7 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* mis rutas */
 Route::get("mi-perfil", [PerfilController::class, "index"])->name("usuario.perfil");
 Route::post("actualizar-foto-perfil",[PerfilController::class, "ActualizarIMG"])->name("usuario.actualizarIMG");
-
+Route::get("eliminar-foto-perfil", [PerfilController::class, "eliminarFotoPerfil"])->name("perfil.eliminarFoto");
 
 //empresa
 Route::get('empresa-index',[EmpresaController::class,'index'])->name('empresa.index')->middleware('verified');

@@ -65,8 +65,10 @@
 
         {{-- chart js --}}
         <script src="{{asset('chart/chart.js')}}"></script>
-
+        {{-- agregamos sweet alert --}}
+        <script src="{{ asset('sweet/js/sweetalert2.js') }}"></script>
         <style>
+            
             .marca {
                 width: 100%;
                 background: rgb(13, 39, 48);
@@ -132,10 +134,12 @@
                             <div class="dropdown user-menu">
                                 <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
+                                    
                                     @if (Auth::user()->foto==null)
                                     <img src="{{asset('app/publico/img/user.svg')}}" alt="">
                                     @else
-                                    <img src="{{ asset("storage/FOTOS-PERFIL-USUARIO/$item->foto") }}" alt="">
+                                    {{-- "") }}" --}}
+                                    <img src="{{ asset("storage/FOTOS-PERFIL-USUARIO/".Auth::user()->foto)}}" alt="">
                                     @endif
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="dd-user-menu">

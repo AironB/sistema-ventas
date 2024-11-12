@@ -37,7 +37,7 @@
 
                 });
             });
-        @endif
+            @endif
         </script>
         @if (@session('mensaje'))
             <script>
@@ -51,18 +51,17 @@
                     });
                 });
             </script>
-
         @endif
         <h4 class="text-center text-secondary"> MI PERFIL </h4>
         @foreach ($datos as $item)
             <div class="contenedor">
                 <div>
                     {{-- llamamos la imagen segun el dato que esta en la DB --}}
-                    @if ($item->foto !=null)
-                    <img class="img" src="{{ asset("storage/FOTOS-PERFIL-USUARIO/$item->foto") }}">
-                    @else 
-                    {{-- Si no hay imagen mostramos un avatar --}}
-                    <img class="img" src="{{ asset("images/img.jpg") }}">
+                    @if ($item->foto != null)
+                        <img class="img" src="{{ asset("storage/FOTOS-PERFIL-USUARIO/$item->foto") }}">
+                    @else
+                        {{-- Si no hay imagen mostramos un avatar --}}
+                        <img class="img" src="{{ asset('images/img.jpg') }}">
                     @endif
 
                 </div>
@@ -82,8 +81,18 @@
                         </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-success btn-rounded">Modificar </button>
-                            <button class="btn btn-danger btn-rounded">Eliminar foto</button>
+                            <button type="submit" form="eliminarFoto" class="btn btn-danger btn-rounded">Eliminar foto</button>
                         </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <form action="{{ route('perfil.eliminarFoto') }}" id="eliminarFoto" class="formulario-eliminar" method="GET">
+
+            </form>
+
+            <form action="bg-white p-3">
                         <div>
                             <div class="fl-flex-label col-12 col-lg-6 mb-4">
                                 <input type="text" class="input input__text" placeholder="DUI">
@@ -116,9 +125,8 @@
                                 <button type="submit" class="btn btn-primary btn-rounded"> Guardar</button>
                             </div>
                         </div>
-                    </form>
-
                 </div>
-            </div>
+            
+        </form>
         @endforeach
     @endsection

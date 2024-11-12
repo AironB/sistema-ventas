@@ -13,7 +13,7 @@ class PerfilController extends Controller
     public function index()
     {
         $idUsuario = Auth::user()->id_usuario;
-        $datos = DB::select("select * from usuario where id_usuario=$idUsuario");
+        $datos = DB::select("select * from usuario where id_usuario=$idUsuario ");
         return view("vistas.perfil", compact("datos"));
     }
     public function actualizarIMG(Request $request)
@@ -52,6 +52,24 @@ class PerfilController extends Controller
             return back()->with("mensaje", "Imagen actualizada correctamente");
         } else {
             return back()->with("error", "Error al actualizar la imagen");
+        }
+    }
+    public function eliminarFotoPerfil(){
+        $idUsuario = Auth::user()->id_usuario;
+        $nombreFoto = Auth::user()->foto;
+        $ruta=storage_path("app/public/FOTOS-PERFIL-USUARIO/$nombreFoto");
+        try{
+            $res = unlink($ruta);
+            $actualizarCampoFoto = DB::update("update usuario set foto='' where id_usuario=$idUsuario");
+        }catch(\Throwable $th){
+            $res = false;
+
+        }
+        
+        if ($res) {
+            return back()->with("mensaje", "Imagen eliminada correctamente");
+        }else{
+            return back()->with("error", "Error al eliminar la imagen");
         }
     }
 }
